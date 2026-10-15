@@ -1,6 +1,6 @@
 # Custom Lakeflow Jobs task built with Genie Code
 
-Companion repository for the article *How to build and ship a custom Lakeflow Jobs task with Genie Code as your AI coworker*.
+Companion repository for the article *Databricks can send WhatsApp messages and much more: build reusable Lakeflow Jobs tasks with Genie Code*.
 
 It shows how to use Genie Code inside a Databricks workspace to create, validate, test and version a [Lakeflow Integration](https://docs.databricks.com/aws/en/jobs/tasks/lakeflow-integrations): a custom task type for Lakeflow Jobs. The example sends a WhatsApp message through Twilio, but the same pattern works for any API call, notification or custom code you want to offer as a standard, governed task.
 
