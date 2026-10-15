@@ -1,0 +1,36 @@
+resources:
+  jobs:
+    send_whatsapp_message:
+      name: "send_whatsapp_message"
+
+      parameters:
+        - name: "to_phone_number"
+          default: "+5511999999999"
+        - name: "message"
+          default: "Hello from Databricks!"
+        - name: "template_id"
+          default: "HXa9d0fd6215858003e64aae6f151ea1e7"
+        - name: "databricks_secrets_scope"
+          default: "twilio"
+
+      tasks:
+        - task_key: whatsapp
+          environment_key: custom_whatsapp_task_environment
+          python_operator_task:
+            main: custom_whatsapp_task.whatsapp.send_whatsapp_message
+            parameters:
+              - name: "to_phone_number"
+                value: "{{job.parameters.to_phone_number}}"
+              - name: "message"
+                value: "{{job.parameters.message}}"
+              - name: "template_id"
+                value: "{{job.parameters.template_id}}"
+              - name: "databricks_secrets_scope"
+                value: "{{job.parameters.databricks_secrets_scope}}"
+
+      environments:
+        - environment_key: custom_whatsapp_task_environment
+          spec:
+            environment_version: "5"
+            dependencies:
+              - ../dist/*.whl
